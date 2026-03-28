@@ -1,0 +1,108 @@
+{
+  "debian": {
+    "trixie": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "bookworm": {"architectures": ["amd64", "arm64", "armhf"]},
+    "bullseye": {"architectures": ["amd64", "arm64", "armhf"]},
+    "forky": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]}
+  },
+  "ubuntu": {
+    "jammy": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "noble": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "plucky": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "questing": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]}
+  },
+  "centos": {
+    "9-Stream": {"architectures": ["amd64", "arm64"]},
+    "10-Stream": {"architectures": ["amd64", "arm64"]}
+  },
+  "rockylinux": {
+    "8": {"architectures": ["amd64", "arm64"]},
+    "9": {"architectures": ["amd64", "arm64"]},
+    "10": {"architectures": ["amd64", "arm64"]}
+  },
+  "alpine": {
+    "3.20": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "3.21": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "3.22": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "3.23": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]},
+    "edge": {"architectures": ["amd64", "arm64", "armhf", "riscv64"]}
+  },
+  "fedora": {
+    "41": {"architectures": ["amd64", "arm64"]},
+    "42": {"architectures": ["amd64", "arm64"]},
+    "43": {"architectures": ["amd64", "arm64"]}
+  },
+  "archlinux": {
+    "current": {"architectures": ["amd64", "riscv64"]}
+  },
+  "almalinux": {
+    "8": {"architectures": ["amd64", "arm64"]},
+    "9": {"architectures": ["amd64", "arm64"]},
+    "10": {"architectures": ["amd64", "arm64"]}
+  },
+  "amazonlinux": {
+    "2": {"architectures": ["amd64", "arm64"]},
+    "2023": {"architectures": ["amd64"]}
+  },
+  "opensuse": {
+    "15.6": {"architectures": ["amd64", "arm64"]},
+    "16.0": {"architectures": ["amd64", "arm64"]},
+    "tumbleweed": {"architectures": ["amd64", "arm64"]}
+  },
+  "oracle": {
+    "7": {"architectures": ["amd64", "arm64"]},
+    "8": {"architectures": ["amd64", "arm64"]},
+    "9": {"architectures": ["amd64", "arm64"]}
+  },
+  "kali": {
+    "current": {"architectures": ["amd64", "arm64"]}
+  },
+  "nixos": {
+    "25.11": {"architectures": ["amd64", "arm64"]}
+  },
+  "openeuler": {
+    "20.03": {"architectures": ["amd64", "arm64"]},
+    "22.03": {"architectures": ["amd64", "arm64"]},
+    "24.03": {"architectures": ["amd64", "arm64"]},
+    "25.03": {"architectures": ["amd64", "arm64"]}
+  },
+  "devuan": {
+    "chimaera": {"architectures": ["amd64", "arm64"]},
+    "daedalus": {"architectures": ["amd64", "arm64"]},
+    "excalibur": {"architectures": ["amd64", "arm64"]}
+  },
+  "voidlinux": {
+    "current": {"architectures": ["amd64", "arm64"]}
+  },
+  "gentoo": {
+    "current": {"architectures": ["amd64", "arm64"], "variants": ["systemd", "openrc"]}
+  },
+  "alt": {
+    "Sisyphus": {"architectures": ["amd64", "arm64"]},
+    "p11": {"architectures": ["amd64", "arm64"]}
+  },
+  "busybox": {
+    "1.36.1": {"architectures": ["amd64", "arm64"]}
+  },
+  "mint": {
+    "wilma": {"architectures": ["amd64"]},
+    "virginia": {"architectures": ["amd64"]},
+    "victoria": {"architectures": ["amd64"]},
+    "vera": {"architectures": ["amd64"]},
+    "vanessa": {"architectures": ["amd64"]},
+    "una": {"architectures": ["amd64"]},
+    "uma": {"architectures": ["amd64"]},
+    "ulyssa": {"architectures": ["amd64"]},
+    "ulyana": {"architectures": ["amd64"]}
+  },
+  "openwrt": {
+    "23.05": {"architectures": ["amd64", "arm64"]},
+    "24.10": {"architectures": ["amd64", "arm64"]},
+    "25.12": {"architectures": ["amd64", "arm64"]},
+    "snapshot": {"architectures": ["amd64", "arm64"]}
+  },
+  "slackware": {
+    "15.0": {"architectures": ["amd64"]},
+    "current": {"architectures": ["amd64"]}
+  }
+}
