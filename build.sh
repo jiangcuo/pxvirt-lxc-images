@@ -44,12 +44,46 @@ if [ "$CLI_DIST" = "--scan" ]; then
             sha512=`sha512sum "$image_file"|awk '{print $1}'`
             
             # 尝试解析文件名
+            # 支持格式:
+            #   distro-codename-date_arch.tar.xz (标准格式)
+            #   distro-codename-date_arch-variant.tar.xz (带variant)
+            #   centos-version-Stream-date_arch.tar.xz (CentOS Stream特殊格式)
             if [[ "$filename" =~ ^([^-]+)-([^-]+)-([0-9]+)_([^.]+)(-[^.]+)?\.tar\.xz$ ]]; then
+                # 标准格式匹配成功
                 dist_name="${BASH_REMATCH[1]}"
                 codename="${BASH_REMATCH[2]}"
                 arch="${BASH_REMATCH[4]}"
                 variant="${BASH_REMATCH[5]}"
-                variant="${variant#-}"  # 移除开头的 -
+                variant="${variant#-}"
+                
+            elif [[ "$filename" =~ ^centos-([0-9]+)-Stream-([0-9]+)_([^.]+)\.tar\.xz$ ]]; then
+                # CentOS Stream 特殊格式: centos-9-Stream-20260328_amd64.tar.xz
+                dist_name="centos"
+                codename="${BASH_REMATCH[1]}"
+                arch="${BASH_REMATCH[3]}"
+                variant=""
+                
+            elif [[ "$filename" =~ ^openeuler-([0-9]+\.[0-9]+)-LTS-([0-9]+)_([^.]+)\.tar\.xz$ ]]; then
+                # openEuler LTS 特殊格式: openeuler-24.03-LTS-20260328_loongarch64.tar.xz
+                dist_name="openeuler"
+                codename="${BASH_REMATCH[1]}-LTS"
+                arch="${BASH_REMATCH[3]}"
+                variant=""
+                
+            elif [[ "$filename" =~ ^kylin-([vV][0-9]+)-([0-9]+)_([^.]+)\.tar\.xz$ ]]; then
+                # Kylin 特殊格式: kylin-V11-2503-20260328_aarch64.tar.xz
+                # 格式: kylin-V11-YYMM-date_arch (YYMM 是年份月份短格式)
+                dist_name="kylin"
+                # 转换为小写 v11
+                codename=$(echo "${BASH_REMATCH[1]}" | tr '[:upper:]' '[:lower:]')
+                arch="${BASH_REMATCH[3]}"
+                variant=""
+            else
+                # 匹配失败
+                dist_name=""
+            fi
+            
+            if [ -n "$dist_name" ]; then
                 
                 # 计算版本号
                 version=$(get_version "$codename" 2>/dev/null || echo "$codename")
@@ -67,7 +101,7 @@ Certified: no
 Maintainer: Lierfang <itsupport@lierfang.com>
 Location: lxcs/$dist/$filename
 Infopage: https://linuxcontainers.org
-ManageUrl: https://mirrors.lierfang.com/pxcloud/pxvirt/lxcs/build.sh
+ManageUrl: https://github.com/jiangcuo/pxvirt-lxc-images
 md5sum: $md5
 sha512sum: $sha512
 Description: $pkg_name-$rootfs_date
@@ -276,7 +310,7 @@ Certified: no
 Maintainer: Linuxcontainers.org <https://lists.linuxcontainers.org/listinfo/lxc-devel>
 Location: lxcs/$dist/$(basename "$output_file")
 Infopage: https://linuxcontainers.org
-ManageUrl: https://mirrors.lierfang.com/pxcloud/pxvirt/lxcs/build.sh
+ManageUrl: https://github.com/jiangcuo/pxvirt-lxc-images
 md5sum: $md5
 sha512sum: $sha512
 Description: $pkg_name-$rootfs_date
